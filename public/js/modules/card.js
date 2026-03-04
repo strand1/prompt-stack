@@ -12,9 +12,11 @@ import { formatRelativeTime, escapeHtml, truncate } from '../utils.js';
  * @param {Function} onCopy - Callback when copy button clicked
  * @param {Function} onRefactor - Callback when refactor button clicked
  * @param {Function} onCardClick - Callback when card body clicked
+ * @param {Function} onEdit - Callback when edit button clicked
+ * @param {Function} onDelete - Callback when delete button clicked
  * @returns {HTMLElement} Card element
  */
-export function createCard(prompt, onCopy, onRefactor, onCardClick) {
+export function createCard(prompt, onCopy, onRefactor, onCardClick, onEdit, onDelete) {
   const card = document.createElement('article');
   card.className = 'prompt-card';
   card.dataset.id = prompt.id;
@@ -23,9 +25,9 @@ export function createCard(prompt, onCopy, onRefactor, onCardClick) {
   const hasImage = prompt.image && typeof prompt.image === 'string' && prompt.image.length > 0;
 
   if (hasImage) {
-    createImageCard(card, prompt, onCopy, onRefactor, onCardClick);
+    createImageCard(card, prompt, onCopy, onRefactor, onCardClick, onEdit, onDelete);
   } else {
-    createTextCard(card, prompt, onCopy, onRefactor, onCardClick);
+    createTextCard(card, prompt, onCopy, onRefactor, onCardClick, onEdit, onDelete);
   }
 
   return card;
@@ -34,7 +36,7 @@ export function createCard(prompt, onCopy, onRefactor, onCardClick) {
 /**
  * Build image card (with large image background, hover overlay optional)
  */
-function createImageCard(card, prompt, onCopy, onRefactor, onCardClick) {
+function createImageCard(card, prompt, onCopy, onRefactor, onCardClick, onEdit, onDelete) {
   // Image
   const img = document.createElement('img');
   img.src = `/images/${prompt.image}`;
@@ -48,17 +50,35 @@ function createImageCard(card, prompt, onCopy, onRefactor, onCardClick) {
   overlay.className = 'card-hover-overlay';
   card.appendChild(overlay);
 
-  // Tags (top-left)
+  // Hover overlay showing full prompt text
+  const promptOverlay = document.createElement('div');
+  promptOverlay.className = 'card-prompt-overlay';
+  promptOverlay.textContent = prompt.prompt;
+  card.appendChild(promptOverlay);
+
+  // Tags (top-left) - limit to 3 tags, show +N more if needed
   if (prompt.tags && prompt.tags.length > 0) {
     const tagsContainer = document.createElement('div');
     tagsContainer.className = 'card-tags';
-    prompt.tags.slice(0, 3).forEach(tag => {
+    const maxTags = 3;
+    const tagsToShow = prompt.tags.slice(0, maxTags);
+    const remainingCount = prompt.tags.length - maxTags;
+    
+    tagsToShow.forEach(tag => {
       const tagEl = document.createElement('span');
       tagEl.className = 'tag';
       tagEl.textContent = escapeHtml(tag);
-      tagEl.hidden = false; // Could truncate with +N more
       tagsContainer.appendChild(tagEl);
     });
+    
+    if (remainingCount > 0) {
+      const moreTag = document.createElement('span');
+      moreTag.className = 'tag tag-more';
+      moreTag.textContent = `+${remainingCount}`;
+      moreTag.title = prompt.tags.slice(maxTags).join(', ');
+      tagsContainer.appendChild(moreTag);
+    }
+    
     card.appendChild(tagsContainer);
   }
 
@@ -78,8 +98,22 @@ function createImageCard(card, prompt, onCopy, onRefactor, onCardClick) {
     onRefactor && onRefactor(prompt);
   });
 
+  const editBtn = createIconButton('edit', 'Edit prompt', 'action-edit');
+  editBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    onEdit && onEdit(prompt);
+  });
+
+  const deleteBtn = createIconButton('delete', 'Delete prompt', 'action-delete');
+  deleteBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    onDelete && onDelete(prompt);
+  });
+
   actions.appendChild(copyBtn);
   actions.appendChild(refactorBtn);
+  actions.appendChild(editBtn);
+  actions.appendChild(deleteBtn);
   card.appendChild(actions);
 
   // Usage bar (always visible at bottom)
@@ -97,7 +131,7 @@ function createImageCard(card, prompt, onCopy, onRefactor, onCardClick) {
 /**
  * Build text-only card (no image, simplified layout)
  */
-function createTextCard(card, prompt, onCopy, onRefactor, onCardClick) {
+function createTextCard(card, prompt, onCopy, onRefactor, onCardClick, onEdit, onDelete) {
   card.classList.add('card-no-image');
 
   // Title
@@ -117,17 +151,67 @@ function createTextCard(card, prompt, onCopy, onRefactor, onCardClick) {
   spacer.style.flex = '1 1 auto';
   card.appendChild(spacer);
 
-  // Tags (below text)
+  // Action buttons (top-right for text cards too)
+  const actions = document.createElement('div');
+  actions.className = 'card-actions';
+  actions.style.position = 'absolute';
+  actions.style.top = 'var(--space-sm)';
+  actions.style.right = 'var(--space-sm)';
+
+  const copyBtn = createIconButton('copy', 'Copy prompt', 'action-copy');
+  copyBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    onCopy && onCopy(prompt);
+  });
+
+  const refactorBtn = createIconButton('refactor', 'Refactor (duplicate and edit)', 'action-refactor');
+  refactorBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    onRefactor && onRefactor(prompt);
+  });
+
+  const editBtn = createIconButton('edit', 'Edit prompt', 'action-edit');
+  editBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    onEdit && onEdit(prompt);
+  });
+
+  const deleteBtn = createIconButton('delete', 'Delete prompt', 'action-delete');
+  deleteBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    onDelete && onDelete(prompt);
+  });
+
+  actions.appendChild(copyBtn);
+  actions.appendChild(refactorBtn);
+  actions.appendChild(editBtn);
+  actions.appendChild(deleteBtn);
+  card.appendChild(actions);
+
+  // Tags (below text) - limit to 3 tags, show +N more if needed
   if (prompt.tags && prompt.tags.length > 0) {
     const tagsContainer = document.createElement('div');
     tagsContainer.className = 'card-tags';
     tagsContainer.style.position = 'static'; // Not absolute
-    prompt.tags.slice(0, 3).forEach(tag => {
+    const maxTags = 3;
+    const tagsToShow = prompt.tags.slice(0, maxTags);
+    const remainingCount = prompt.tags.length - maxTags;
+    
+    tagsToShow.forEach(tag => {
       const tagEl = document.createElement('span');
       tagEl.className = 'tag';
       tagEl.textContent = escapeHtml(tag);
       tagsContainer.appendChild(tagEl);
     });
+    
+    if (remainingCount > 0) {
+      const moreTag = document.createElement('span');
+      moreTag.className = 'tag tag-more';
+      moreTag.textContent = `+${remainingCount}`;
+      moreTag.title = prompt.tags.slice(maxTags).join(', ');
+      tagsContainer.appendChild(moreTag);
+    }
+    
     card.appendChild(tagsContainer);
   }
 

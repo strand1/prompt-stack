@@ -68,6 +68,8 @@ function init() {
     onCardClick: openCardModal,
     onCopy: copyPrompt,
     onRefactor: refactorPrompt,
+    onEdit: editPrompt,
+    onDelete: deletePrompt,
   });
 
   search = new Search(elements.searchInput, elements.searchClear, {
@@ -346,6 +348,16 @@ function openCardModal(prompt) {
   } else {
     modalManager.openPromptModal(prompt.id);
   }
+}
+
+function editPrompt(prompt) {
+  // Same as clicking the card - open appropriate modal for editing
+  openCardModal(prompt);
+}
+
+async function deletePrompt(prompt) {
+  // Use modal manager's delete handler which shows confirmation
+  await modalManager.handleDelete(prompt.id);
 }
 
 async function handleRandom() {

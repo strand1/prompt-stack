@@ -14,6 +14,8 @@ export class Grid {
     this.onCardClick = options.onCardClick || (() => {});
     this.onCopy = options.onCopy || (() => {});
     this.onRefactor = options.onRefactor || (() => {});
+    this.onEdit = options.onEdit || (() => {});
+    this.onDelete = options.onDelete || (() => {});
 
     this.visibleCards = new Map(); // id -> element
     this.observer = null;
@@ -80,7 +82,9 @@ export class Grid {
         prompt,
         this.onCopy.bind(this, prompt),
         this.onRefactor.bind(this, prompt),
-        this.onCardClick.bind(this, prompt)
+        this.onCardClick.bind(this, prompt),
+        this.onEdit.bind(this, prompt),
+        this.onDelete.bind(this, prompt)
       );
 
       this.visibleCards.set(prompt.id, card);
@@ -112,7 +116,9 @@ export class Grid {
         prompt,
         this.onCopy.bind(this, prompt),
         this.onRefactor.bind(this, prompt),
-        this.onCardClick.bind(this, prompt)
+        this.onCardClick.bind(this, prompt),
+        this.onEdit.bind(this, prompt),
+        this.onDelete.bind(this, prompt)
       );
       card.replaceWith(newCard);
       this.visibleCards.set(id, newCard);
