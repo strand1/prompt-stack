@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head><title>Debug API</title></head>
+<body>
+<h1>Prompt Stack Debug</h1>
+<button onclick="testAPI()">Test API</button>
+<pre id="output"></pre>
+<script>
+async function testAPI() {
+  const out = document.getElementById('output');
+  out.textContent = 'Testing...\n';
+
+  try {
+    const res = await fetch('/api/prompts?include_deleted=true');
+    out.textContent += 'Status: ' + res.status + ' ' + res.statusText + '\n';
+    const data = await res.json();
+    out.textContent += 'Prompts count: ' + data.prompts.length + '\n';
+    out.textContent += 'Total: ' + data.pagination.total + '\n';
+    out.textContent += 'First: ' + (data.prompts[0]?.title || 'none') + '\n';
+    out.textContent += '\nFull response:\n' + JSON.stringify(data, null, 2);
+  } catch (e) {
+    out.textContent += 'Error: ' + e.message + '\n' + e.stack;
+  }
+}
+</script>
+</body>
+</html>

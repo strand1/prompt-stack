@@ -1,0 +1,14 @@
+node_modules/
+prompts.db
+prompts.db-shm
+prompts.db-wal
+.env
+uploads/*
+!uploads/.gitkeep
+.DS_Store
+*.log
+v1_archive/
+v2_archive_final/
+images/*
+!images/.gitkeep
+.ipynb_checkpoints/

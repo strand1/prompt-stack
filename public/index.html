@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prompt Stack - Image Prompt Manager</title>
+  <link rel="stylesheet" href="css/style-v3.css">
+</head>
+<body>
+  <div class="app">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-brand">
+        <h1>Prompt Stack</h1>
+        <span class="header-subtitle">Image Generation Prompt Manager</span>
+      </div>
+      <div class="header-actions">
+        <button id="btn-theme-toggle" class="btn btn-icon" title="Toggle dark/light mode">🌙</button>
+        <button id="btn-random" class="btn btn-secondary">🎲 Random</button>
+        <button id="btn-export" class="btn btn-secondary">Export</button>
+        <button id="btn-import" class="btn btn-secondary">Import</button>
+        <button id="btn-cleanup" class="btn btn-danger">Cleanup</button>
+        <button id="btn-create" class="btn btn-primary">+ New Prompt</button>
+      </div>
+    </header>
+
+    <!-- Controls Section -->
+    <section class="controls">
+      <div class="search-row">
+        <div class="search-input-wrapper">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search prompts..."
+            class="search-input"
+            autocomplete="off"
+          >
+          <button id="btn-search-clear" class="btn-clear" title="Clear search">×</button>
+        </div>
+        <div class="filter-actions">
+          <select id="sort-select" class="select">
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+            <option value="most_used">Most Used</option>
+          </select>
+          <label class="checkbox-label">
+            <input type="checkbox" id="include-deleted">
+            Include Deleted
+          </label>
+        </div>
+      </div>
+      <div id="tags-cloud" class="tags-cloud">
+        <!-- Tags populated by JS -->
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main">
+      <div id="prompts-grid" class="prompts-grid">
+        <!-- Cards populated by JS -->
+      </div>
+
+      <!-- Loading States -->
+      <div id="loading-initial" class="loading" hidden>
+        <div class="spinner"></div>
+        <p>Loading prompts...</p>
+      </div>
+
+      <div id="loading-more" class="loading loading-inline" hidden>
+        <div class="spinner"></div>
+        <p>Loading more...</p>
+      </div>
+
+      <div id="empty-state" class="empty-state" hidden>
+        <p>No prompts found.</p>
+        <p class="hint">Click "+ New Prompt" to create your first prompt.</p>
+      </div>
+
+      <!-- Infinite Scroll Sentinel -->
+      <div id="scroll-sentinel" class="sentinel"></div>
+    </main>
+  </div>
+
+  <!-- Prompt Modal (for text-only cards + new prompts) -->
+  <div id="prompt-modal" class="modal" hidden aria-hidden="true" role="dialog">
+    <div class="modal-overlay"></div>
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h2 id="modal-title">Create Prompt</h2>
+        <button class="modal-close" aria-label="Close modal">×</button>
+      </div>
+      <form id="prompt-form" class="modal-form">
+        <input type="hidden" id="prompt-id">
+
+        <div class="form-group">
+          <label for="input-title">Title</label>
+          <input
+            type="text"
+            id="input-title"
+            placeholder="Auto-generated from prompt, or edit manually"
+            autocomplete="off"
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="input-prompt">Prompt *</label>
+          <textarea
+            id="input-prompt"
+            required
+            rows="6"
+            placeholder="Enter the image generation prompt..."
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="input-tags">Tags (comma-separated)</label>
+          <input
+            type="text"
+            id="input-tags"
+            placeholder="e.g., landscape, anime, realistic"
+            autocomplete="off"
+          >
+        </div>
+
+        <div class="form-group">
+          <label>Image (optional)</label>
+          <input type="file" id="input-image" accept="image/*" style="display: none;">
+          <div class="image-controls">
+            <button type="button" id="btn-select-image" class="btn btn-secondary btn-sm">Choose Image</button>
+            <button type="button" id="btn-remove-image" class="btn btn-secondary btn-sm" hidden>Remove</button>
+            <button type="button" id="btn-generate-image" class="btn btn-primary btn-sm" hidden>✨ Generate Image</button>
+          </div>
+          <div id="image-preview" class="image-preview" hidden>
+            <img id="preview-thumb" alt="Selected image">
+            <button type="button" id="btn-preview-remove" class="preview-remove">×</button>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary modal-cancel">Cancel</button>
+          <button type="button" id="btn-delete" class="btn btn-danger" hidden>Delete</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Image Viewer Modal (for cards with images) -->
+  <div id="image-viewer-modal" class="modal image-viewer" hidden aria-hidden="true" role="dialog">
+    <div class="modal-overlay"></div>
+    <div class="image-viewer-content">
+      <div class="image-viewer-main">
+        <button class="image-viewer-close" aria-label="Close image viewer">×</button>
+        <img id="viewer-image" class="viewer-image" alt="Full size prompt image">
+      </div>
+      <div class="image-viewer-editor">
+        <div class="editor-header">
+          <h3>Edit Prompt</h3>
+        </div>
+        <form id="viewer-form" class="editor-form">
+          <input type="hidden" id="viewer-prompt-id">
+
+          <div class="form-group">
+            <label for="viewer-title">Title</label>
+            <input type="text" id="viewer-title" autocomplete="off">
+          </div>
+
+          <div class="form-group">
+            <label for="viewer-prompt">Prompt *</label>
+            <textarea id="viewer-prompt" required rows="4"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="viewer-tags">Tags</label>
+            <input type="text" id="viewer-tags" autocomplete="off">
+          </div>
+
+          <div class="form-group">
+            <label>Current Image</label>
+            <div class="current-image-preview">
+              <img id="current-image-thumb" alt="Current image">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Change Image</label>
+            <input type="file" id="viewer-image-input" accept="image/*" style="display: none;">
+            <div class="image-controls">
+              <button type="button" id="btn-viewer-select-image" class="btn btn-secondary btn-sm">Choose Different</button>
+              <button type="button" id="btn-viewer-remove-image" class="btn btn-secondary btn-sm" hidden>Remove</button>
+            </div>
+          </div>
+
+          <div class="editor-actions">
+            <button type="button" class="btn btn-secondary editor-cancel">Cancel</button>
+            <button type="button" id="btn-viewer-delete" class="btn btn-danger" hidden>Delete</button>
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Random Prompt Modal -->
+  <div id="random-modal" class="modal" hidden aria-hidden="true" role="dialog">
+    <div class="modal-overlay"></div>
+    <div class="modal-dialog modal-small">
+      <div class="modal-header">
+        <h2>Random Prompt</h2>
+        <button class="modal-close" aria-label="Close">×</button>
+      </div>
+      <div class="random-content">
+        <div id="random-result" class="random-result" hidden>
+          <div class="random-image" hidden>
+            <img id="random-image" alt="Random prompt image">
+          </div>
+          <div class="random-info">
+            <h3 id="random-title"></h3>
+            <pre id="random-prompt"></pre>
+            <div id="random-tags" class="tags-list"></div>
+          </div>
+        </div>
+        <div id="random-loading" class="loading" hidden>
+          <div class="spinner"></div>
+          <p>Fetching random prompt...</p>
+        </div>
+        <div class="random-actions">
+          <button id="btn-random-copy" class="btn btn-primary">Copy Prompt</button>
+          <button id="btn-random-refactor" class="btn btn-secondary">Refactor</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notifications -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

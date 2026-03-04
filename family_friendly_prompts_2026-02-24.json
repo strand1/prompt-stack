@@ -1,0 +1,314 @@
+{
+  "version": "1.0",
+  "export_date": "2026-02-24",
+  "description": "Family-friendly advertisement character prompts optimized for Z-Image Turbo",
+  "total_prompts": 50,
+  "categories": [
+    "Food & Beverage",
+    "Health & Beauty",
+    "Technology & Home",
+    "Family & Lifestyle"
+  ],
+  "prompts": [
+    {
+      "id": 1,
+      "category": "Food & Beverage",
+      "title": "Happy Chef - Cooking Oil Commercial",
+      "prompt": "Full body portrait of a friendly Middle-aged man in his 40s, warm smile, wearing a pristine white chef's jacket with a colorful apron, holding a gleaming cast iron pan with vegetables sizzling, standing in a bright modern kitchen with natural light streaming through window, family-friendly advertisement aesthetic, photorealistic, 8k, commercial lighting, product focus"
+    },
+    {
+      "id": 2,
+      "category": "Food & Beverage",
+      "title": "Refreshing Beverage - Young Adult",
+      "prompt": "Close-up portrait of a young woman in her mid-20s, Caucasian with freckles, bright smile showing perfect teeth, holding a frosty glass beverage with condensation droplets, wearing casual summer clothes, golden hour sunlight creating lens flare, refreshing and joyful expression, advertisement style, photorealistic, shallow depth of field"
+    },
+    {
+      "id": 3,
+      "category": "Food & Beverage",
+      "title": "Breakfast Cereal - Parent and Child",
+      "prompt": "Medium shot of a smiling Black mother in her 30s and her daughter in her 5, sitting at a sunny breakfast table with colorful cereal bowls, wearing cozy pajamas, warm morning light, genuine happy expressions, family bonding moment, wholesome advertisement, photorealistic, warm color palette"
+    },
+    {
+      "id": 4,
+      "category": "Food & Beverage",
+      "title": "Coffee Shop Barista",
+      "prompt": "Full body portrait of a young barista in her early 20s, friendly smile, wearing an apron over trendy casual clothes, expertly steaming milk behind a coffee counter, espresso machine gleaming, café customers blurred in background, inviting atmosphere, advertisement quality, photorealistic, warm ambient lighting"
+    },
+    {
+      "id": 5,
+      "category": "Food & Beverage",
+      "title": "Ice Cream Truck Driver",
+      "prompt": "Cheerful elderly man in his 60s, white hair, wearing a striped shirt and paper hat, waving from the window of a colorful ice cream truck, children visible in background running toward truck, bright sunny day, nostalgic advertisement feel, photorealistic, vibrant colors"
+    },
+    {
+      "id": 6,
+      "category": "Health & Beauty",
+      "title": "Skincare Influencer",
+      "prompt": "Close-up portrait of an Asian woman in her late 20s, flawless glowing skin, minimal makeup, wearing a soft headband, holding a facial serum bottle, soft natural lighting, clean white background, beauty advertisement aesthetic, photorealistic, 8k, skin texture details"
+    },
+    {
+      "id": 7,
+      "category": "Health & Beauty",
+      "title": "Fitness Trainer - Positive Energy",
+      "prompt": "Full body portrait of a Latina fitness trainer in her early 30s, athletic build, wearing matching workout set, demonstrating a yoga pose in a sunlit studio, motivational smile, bright and energetic, health and wellness advertisement, photorealistic, dynamic pose"
+    },
+    {
+      "id": 8,
+      "category": "Health & Beauty",
+      "title": "Family Dentist",
+      "prompt": "Medium shot of a kind-looking male dentist in his 40s, wearing a white coat, holding dental tools, gentle expression, modern dental office background with friendly decor, reassuring and professional, healthcare advertisement, photorealistic, clean lighting"
+    },
+    {
+      "id": 9,
+      "category": "Health & Beauty",
+      "title": "Haircare Specialist",
+      "prompt": "Portrait of a professional hair stylist in her 30s, stylish appearance, wearing salon attire, gently brushing a client's hair, salon mirrors reflecting warm lighting, beauty and elegance, haircare advertisement, photorealistic, soft focus background"
+    },
+    {
+      "id": 10,
+      "category": "Health & Beauty",
+      "title": "Sunscreen Ambassador",
+      "prompt": "Close-up portrait of a young male surfer in his 20s, athletic build, tan skin, wearing board shorts, applying sunscreen to his face on a beach, bright sunlight, ocean waves in background, active lifestyle advertisement, photorealistic, golden hour lighting"
+    },
+    {
+      "id": 11,
+      "category": "Technology & Home",
+      "title": "Smart Home Mom",
+      "prompt": "Full body portrait of a tech-savvy mother in her 30s, wearing casual modern clothes, smiling while controlling a smartphone that displays smart home controls, standing in a tidy living room with smart devices visible, family-friendly tech advertisement, photorealistic, natural lighting"
+    },
+    {
+      "id": 12,
+      "category": "Technology & Home",
+      "title": "Gaming Dad",
+      "prompt": "Medium shot of a father in his late 30s, wearing comfortable clothes, playing video games with his two kids on a large TV screen, all laughing together, cozy living room with game console visible, family bonding through gaming, advertisement for family entertainment, photorealistic, warm indoor lighting"
+    },
+    {
+      "id": 13,
+      "category": "Technology & Home",
+      "title": "Home Security Specialist",
+      "prompt": "Professional male in his 40s, wearing a security company polo shirt, demonstrating a smart doorbell camera on a tablet, standing at a front door, friendly and trustworthy demeanor, home security advertisement, photorealistic, bright daylight"
+    },
+    {
+      "id": 14,
+      "category": "Technology & Home",
+      "title": "Electric Car Salesperson",
+      "prompt": "Young woman in her mid-20s, environmentally conscious appearance, wearing business casual attire, leaning against a sleek electric car with charging cable, smiling confidently, dealership background with green landscaping, eco-friendly transportation advertisement, photorealistic, clean modern aesthetic"
+    },
+    {
+      "id": 15,
+      "category": "Technology & Home",
+      "title": "App Developer",
+      "prompt": "Close-up portrait of a South Asian male developer in his late 20s, glasses, wearing a hoodie, showing a smartphone app to a smiling elderly woman, tech support and accessibility theme, intergenerational connection, advertisement for user-friendly technology, photorealistic, soft office lighting"
+    },
+    {
+      "id": 16,
+      "category": "Family & Lifestyle",
+      "title": "Insurance Agent - Trustworthy",
+      "prompt": "Middle-aged male insurance agent in his 50s, grey hair, wearing a suit but approachable, sitting at a desk with a family discussing policies, warm smile, professional yet friendly, financial security advertisement, photorealistic, office setting with natural light"
+    },
+    {
+      "id": 17,
+      "category": "Family & Lifestyle",
+      "title": "Real Estate Agent",
+      "prompt": "Young female real estate agent in her early 30s, stylish but professional, holding house keys, standing in front of a beautiful suburban home with a 'For Sale' sign, bright sunny day, welcoming gesture, real estate advertisement, photorealistic, curb appeal perspective"
+    },
+    {
+      "id": 18,
+      "category": "Family & Lifestyle",
+      "title": "Pet Food Representative",
+      "prompt": "Full body portrait of a cheerful young woman in her 20s, pet lover appearance, kneeling to feed a golden retriever from a premium pet food bag, park setting with trees and grass, genuine affection for animals, pet product advertisement, photorealistic, golden hour lighting"
+    },
+    {
+      "id": 19,
+      "category": "Family & Lifestyle",
+      "title": "Bank Teller - Community Focus",
+      "prompt": "Medium shot of a friendly bank teller in her 40s, wearing bank uniform with name tag, helping an elderly customer at a counter, warm and patient expression, modern bank interior with clean design, community banking advertisement, photorealistic, bright professional lighting"
+    },
+    {
+      "id": 20,
+      "category": "Family & Lifestyle",
+      "title": "Travel Agent - Dream Vacation",
+      "prompt": "Vibrant female travel agent in her 30s, wearing a colorful blazer with travel pins, standing in front of a world map wall, holding a tablet showing tropical beach destination, enthusiastic and knowledgeable, travel agency advertisement, photorealistic, office with travel decor"
+    },
+    {
+      "id": 21,
+      "category": "Food & Beverage",
+      "title": "Pizza Chef - Family Restaurant",
+      "prompt": "Jovial male chef in his 30s, wearing chef's hat and apron, holding a freshly baked pizza with cheese stretching, standing in a family restaurant kitchen with brick oven, warm and inviting atmosphere, restaurant advertisement, photorealistic, steam rising from pizza"
+    },
+    {
+      "id": 22,
+      "category": "Food & Beverage",
+      "title": "Juice Bar Attendant",
+      "prompt": "Young female juice bar attendant in her early 20s, health-conscious appearance, wearing casual attire, blending fresh fruits in a commercial blender, colorful fruits visible, clean and fresh environment, health beverage advertisement, photorealistic, bright lighting"
+    },
+    {
+      "id": 23,
+      "category": "Food & Beverage",
+      "title": "Baker - Morning Fresh",
+      "prompt": "Middle-aged female baker in her 40s, wearing a baker's uniform and hat, presenting fresh pastries on a tray, standing in a bakery with morning light streaming through window, warm and nurturing smile, bakery advertisement, photorealistic, warm golden tones"
+    },
+    {
+      "id": 24,
+      "category": "Food & Beverage",
+      "title": "Fast Food Crew Member",
+      "prompt": "Friendly young adult in their early 20s, wearing fast food uniform, holding a tray of burgers and fries, smiling at camera with genuine enthusiasm, clean restaurant interior, fast food advertisement, photorealistic, bright commercial lighting"
+    },
+    {
+      "id": 25,
+      "category": "Food & Beverage",
+      "title": "Wine Sommelier - Family Dinner",
+      "prompt": "Professional male sommelier in his 30s, wearing a suit, explaining wine pairing to a couple at an elegant dinner table, sophisticated but approachable, restaurant setting with soft lighting, wine advertisement, photorealistic, warm ambiance"
+    },
+    {
+      "id": 26,
+      "category": "Health & Beauty",
+      "title": "Pharmacist - Community Care",
+      "prompt": "Kind female pharmacist in her 40s, wearing a white coat, helping an elderly customer with medication, gentle expression, pharmacy interior with organized shelves, healthcare advertisement, photorealistic, clean professional lighting"
+    },
+    {
+      "id": 27,
+      "category": "Health & Beauty",
+      "title": "Massage Therapist - Relaxation",
+      "prompt": "Calm female massage therapist in her 30s, wearing spa attire, performing a massage on a client's shoulders, serene spa environment with soft lighting and candles, relaxation advertisement, photorealistic, peaceful atmosphere"
+    },
+    {
+      "id": 28,
+      "category": "Health & Beauty",
+      "title": "Optometrist - Eye Care",
+      "prompt": "Professional male optometrist in his 40s, wearing a white coat, performing an eye exam on a child, friendly and patient demeanor, modern optometry office with eye charts, healthcare advertisement, photorealistic, bright clinical lighting"
+    },
+    {
+      "id": 29,
+      "category": "Health & Beauty",
+      "title": "Makeup Artist - Natural Beauty",
+      "prompt": "Creative female makeup artist in her late 20s, stylish appearance, applying makeup to a client's face in a well-lit studio, various makeup brushes and products visible, beauty tutorial advertisement, photorealistic, soft diffused lighting"
+    },
+    {
+      "id": 30,
+      "category": "Health & Beauty",
+      "title": "Personal Trainer - Senior Fitness",
+      "prompt": "Energetic male personal trainer in his 30s, athletic build, helping an elderly woman with light weights in a gym, encouraging smile, fitness for all ages advertisement, photorealistic, gym lighting, positive atmosphere"
+    },
+    {
+      "id": 31,
+      "category": "Technology & Home",
+      "title": "Plumber - Home Repair",
+      "prompt": "Professional plumber in his 40s, wearing a company uniform, holding tools and explaining a repair to a homeowner, friendly and knowledgeable, home services advertisement, photorealistic, residential basement setting"
+    },
+    {
+      "id": 32,
+      "category": "Technology & Home",
+      "title": "Electrician - Safety First",
+      "prompt": "Certified electrician in his 30s, wearing safety gear and uniform, checking electrical panel in a home, explaining safety features to a family, professional and trustworthy, electrical services advertisement, photorealistic, well-lit home interior"
+    },
+    {
+      "id": 33,
+      "category": "Technology & Home",
+      "title": "HVAC Technician - Comfort Expert",
+      "prompt": "Experienced HVAC technician in his 40s, wearing work uniform, adjusting thermostat in a home, explaining efficiency to homeowners, friendly expert, home comfort advertisement, photorealistic, comfortable living room setting"
+    },
+    {
+      "id": 34,
+      "category": "Technology & Home",
+      "title": "Gardening Specialist",
+      "prompt": "Enthusiastic female gardening expert in her 30s, wearing gardening clothes and gloves, holding a beautiful plant, standing in a lush garden, teaching homeowners about landscaping, garden center advertisement, photorealistic, natural outdoor lighting"
+    },
+    {
+      "id": 35,
+      "category": "Technology & Home",
+      "title": "Interior Designer - Home Makeover",
+      "prompt": "Creative female interior designer in her late 20s, stylish appearance, presenting design samples to a couple in a beautifully decorated room, using tablet to show before/after, home renovation advertisement, photorealistic, elegant interior lighting"
+    },
+    {
+      "id": 36,
+      "category": "Family & Lifestyle",
+      "title": "Childcare Provider - Nurturing Care",
+      "prompt": "Warm female childcare provider in her 30s, wearing casual clothes, reading a book to a group of diverse children sitting on a rug, colorful children's room with toys, childcare service advertisement, photorealistic, soft warm lighting"
+    },
+    {
+      "id": 37,
+      "category": "Family & Lifestyle",
+      "title": "Tutor - Learning Success",
+      "prompt": "Patient male tutor in his 40s, wearing glasses and casual attire, helping a student with math problems at a desk, encouraging expression, educational tutoring advertisement, photorealistic, home office lighting"
+    },
+    {
+      "id": 38,
+      "category": "Family & Lifestyle",
+      "title": "Pet Groomer - Animal Lover",
+      "prompt": "Gentle female pet groomer in her 20s, wearing salon attire, carefully brushing a fluffy dog, pet spa environment with clean surfaces, pet grooming advertisement, photorealistic, bright and clean lighting"
+    },
+    {
+      "id": 39,
+      "category": "Family & Lifestyle",
+      "title": "Elderly Care Assistant",
+      "prompt": "Compassionate female caregiver in her 40s, wearing a uniform, assisting an elderly person with a walker in a park, respectful and caring demeanor, senior care advertisement, photorealistic, sunny park setting"
+    },
+    {
+      "id": 40,
+      "category": "Family & Lifestyle",
+      "title": "Wedding Planner - Perfect Day",
+      "prompt": "Organized female wedding planner in her 30s, wearing a stylish suit, showing a binder to a couple at a venue, confident and detail-oriented, wedding planning advertisement, photorealistic, venue with romantic lighting"
+    },
+    {
+      "id": 41,
+      "category": "Food & Beverage",
+      "title": "Caterer - Event Success",
+      "prompt": "Professional male caterer in his 40s, wearing chef's uniform, presenting a beautiful food display at an event, guests in background enjoying food, event catering advertisement, photorealistic, event lighting with candles"
+    },
+    {
+      "id": 42,
+      "category": "Food & Beverage",
+      "title": "Butcher - Quality Meats",
+      "prompt": "Skilled male butcher in his 30s, wearing apron and white coat, cutting premium meat in a clean butcher shop, friendly smile, quality meat advertisement, photorealistic, shop lighting highlighting freshness"
+    },
+    {
+      "id": 43,
+      "category": "Food & Beverage",
+      "title": "Florist - Fresh Flowers",
+      "prompt": "Artistic female florist in her 20s, wearing casual clothes with floral apron, arranging beautiful flowers in a shop, colorful blooms everywhere, flower shop advertisement, photorealistic, natural light from shop window"
+    },
+    {
+      "id": 44,
+      "category": "Food & Beverage",
+      "title": "Cheesemonger - Artisan Selection",
+      "prompt": "Knowledgeable male cheesemonger in his 40s, wearing a apron, explaining cheese varieties to customers in a specialty shop, cheese boards and wines visible, gourmet food advertisement, photorealistic, warm shop lighting"
+    },
+    {
+      "id": 45,
+      "category": "Food & Beverage",
+      "title": "Barista - Coffee Art",
+      "prompt": "Talented female barista in her mid-20s, creating latte art on a coffee, focused expression, coffee shop background with equipment, specialty coffee advertisement, photorealistic, close-up detail shot"
+    },
+    {
+      "id": 46,
+      "category": "Health & Beauty",
+      "title": "Aesthetician - Skin Treatment",
+      "prompt": "Skilled female aesthetician in her 30s, wearing spa uniform, performing a facial treatment on a client, spa environment with soft lighting and calming colors, skincare spa advertisement, photorealistic, serene atmosphere"
+    },
+    {
+      "id": 47,
+      "category": "Health & Beauty",
+      "title": "Orthodontist - Perfect Smile",
+      "prompt": "Friendly female orthodontist in her 30s, wearing a white coat, showing dental models to a teenage patient and parent, modern orthodontic office, dental health advertisement, photorealistic, clean and bright lighting"
+    },
+    {
+      "id": 48,
+      "category": "Health & Beauty",
+      "title": "Nutritionist - Healthy Eating",
+      "prompt": "Enthusiastic female nutritionist in her 40s, wearing professional attire, presenting a plate of healthy food to a client, educational materials on desk, nutrition counseling advertisement, photorealistic, office with natural light"
+    },
+    {
+      "id": 49,
+      "category": "Health & Beauty",
+      "title": "Physical Therapist - Recovery",
+      "prompt": "Supportive male physical therapist in his 30s, wearing athletic wear, helping a patient with exercises in a rehab clinic, encouraging expression, physical therapy advertisement, photorealistic, clinic with exercise equipment"
+    },
+    {
+      "id": 50,
+      "category": "Family & Lifestyle",
+      "title": "Financial Advisor - Planning Ahead",
+      "prompt": "Trustworthy male financial advisor in his 50s, wearing a suit, reviewing financial documents with a couple at a desk, helpful and knowledgeable, financial planning advertisement, photorealistic, professional office with bookshelves"
+    }
+  ]
+}

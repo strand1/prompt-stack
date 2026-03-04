@@ -1,0 +1,26 @@
+{
+  "name": "prompt-stack",
+  "version": "1.0.0",
+  "description": "Image generation prompt management tool",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node server/index.js"
+  },
+  "keywords": [
+    "prompt",
+    "image-generation",
+    "sdxl",
+    "flux",
+    "dall-e"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "better-sqlite3": "7.5.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "multer": "^2.0.2"
+  }
+}
