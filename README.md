@@ -343,31 +343,6 @@ This adds support for image attachments on prompts. The images themselves are st
 
 ---
 
-## 🎨 Design Decisions
-
-### Why No Model Field?
-
-The application now focuses purely on prompt text. The `model_type` field is still present in the database for backward compatibility but is automatically set to "Other". This simplifies the UX and encourages prompt reusability across different AI image generators.
-
-### Auto-Generated Titles
-
-Titles are auto-filled from the first 60 characters of the prompt when you type. This eliminates the need to think of a separate title while still allowing manual override.
-
-### Soft Delete with Cleanup
-
-Prompts are soft-deleted (marked with `deleted_at` timestamp). A daily cleanup runs (via `setInterval`) and permanently removes deleted prompts older than 30 days. This prevents accidental data loss while maintaining database hygiene.
-
-### Vanilla JS Frontend
-
-No frameworks means:
-- ✅ Faster load times
-- ✅ No build step required
-- ✅ Works in all browsers (ES5 compatible)
-- ✅ Easy to understand and modify
-- ✅ No dependency bloat
-
----
-
 ## 🐛 Troubleshooting
 
 ### "disk I/O error" on startup
@@ -409,7 +384,6 @@ Make sure you're not loading an old cached version. Clear browser cache or use i
 6. Ensure ComfyUI is not blocked by CORS (the app uses server-side proxy, so CORS shouldn't be an issue)
 
 ---
-
 
 ## 📜 License
 
